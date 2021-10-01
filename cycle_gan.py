@@ -1,6 +1,6 @@
 # cycle_gan.py
 #
-# This is the main training file for the CycleGAN part of the assignment.
+# This is the main training file for the CycleGAN .
 #
 # Usage:
 # ======
@@ -232,10 +232,6 @@ def training_loop(dataloader_X, dataloader_Y, test_dataloader_X, test_dataloader
         #            TRAIN THE DISCRIMINATORS
         # ============================================
 
-        #########################################
-        ##             FILL THIS IN            ##
-        #########################################
-
         # Train with real images
         d_optimizer.zero_grad()
 
@@ -273,9 +269,6 @@ def training_loop(dataloader_X, dataloader_Y, test_dataloader_X, test_dataloader
         # =========================================
 
 
-        #########################################
-        ##    FILL THIS IN: Y--X-->Y CYCLE     ##
-        #########################################
         g_optimizer.zero_grad()
 
         # 1. Generate fake images that look like domain X based on real images in domain Y
@@ -293,10 +286,6 @@ def training_loop(dataloader_X, dataloader_Y, test_dataloader_X, test_dataloader
         g_loss.backward()
         g_optimizer.step()
 
-
-        #########################################
-        ##    FILL THIS IN: X--Y-->X CYCLE     ##
-        #########################################
 
         g_optimizer.zero_grad()
 
