@@ -1,15 +1,10 @@
 # models.py
 #
-# This file contains the models used for both parts of the assignment:
+# This file contains the models used for both parts:
 #
 #   - DCGenerator       --> Used in the vanilla GAN
 #   - CycleGenerator    --> Used in the CycleGAN
 #   - DCDiscriminator   --> Used in both the vanilla GAN and CycleGAN
-#
-# For the assignment, you are asked to create the architectures of these three networks by
-# filling in the __init__ methods in the DCGenerator, CycleGenerator, and DCDiscriminator classes.
-# Note that the forward passes of these models are provided for you, so the only part you need to
-# fill in is __init__.
 
 import torch
 import torch.nn as nn
@@ -114,11 +109,6 @@ class DCGenerator(nn.Module):
 
         self.conv_dim = conv_dim
 
-        ###########################################
-        ##   FILL THIS IN: CREATE ARCHITECTURE   ##
-        ###########################################
-
-
         #upconv(in_channels, out_channels, kernel_size, stride=2, padding=2, batch_norm=True, spectral_norm=False)
         self.linear_bn = upconv(noise_size, 4 * conv_dim, 5, 4)
         self.upconv1 = upconv(4 * conv_dim, 2* conv_dim, 5)
@@ -167,10 +157,6 @@ class CycleGenerator(nn.Module):
     def __init__(self, conv_dim=64, init_zero_weights=False):
         super(CycleGenerator, self).__init__()
 
-        ###########################################
-        ##   FILL THIS IN: CREATE ARCHITECTURE   ##
-        ###########################################
-
         # 1. Define the encoder part of the generator (that extracts features from the input image)
         self.conv1 = conv(3, conv_dim, 5,init_zero_weights=init_zero_weights)
         self.conv2 = conv(conv_dim, 2 * conv_dim, 5, init_zero_weights=init_zero_weights)
@@ -211,11 +197,7 @@ class DCDiscriminator(nn.Module):
     """
     def __init__(self, conv_dim=64, spectral_norm=False): # actually 32
         super(DCDiscriminator, self).__init__()
-
-        ###########################################
-        ##   FILL THIS IN: CREATE ARCHITECTURE   ##
-        ###########################################
-
+        
         #conv(in_channels, out_channels, kernel_size, stride=2, padding=2, batch_norm=True, init_zero_weights=False, spectral_norm=False)
         self.conv1 = conv(3, conv_dim, 5, spectral_norm=spectral_norm)
         self.conv2 = conv(conv_dim,2 * conv_dim, 5,spectral_norm=spectral_norm)
