@@ -1,6 +1,6 @@
 # vanilla_gan.py
 #
-# This is the main training file for the vanilla GAN part of the assignment.
+# This is the main training file for the vanilla GAN.
 #
 # Usage:
 # ======
